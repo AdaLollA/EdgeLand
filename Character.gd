@@ -49,5 +49,7 @@ func fire():
 
 func _on_HurtBox_body_entered(body):
 	if 'Bullet' in body.name:
+		health -= 10
+		$CharacterUI.updateUI()
 		print('hit')
 	pass # Replace with function body.
