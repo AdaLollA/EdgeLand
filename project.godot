@@ -8,9 +8,38 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "GridContainer",
+"class": "DataContainer",
+"language": "GDScript",
+"path": "res://godot_table/DataContainer.gd"
+}, {
+"base": "GridContainer",
+"class": "HeaderContainer",
+"language": "GDScript",
+"path": "res://godot_table/HeaderContainer.gd"
+}, {
+"base": "Resource",
+"class": "LayerGroup",
+"language": "GDScript",
+"path": "res://LayerGroup.gd"
+}, {
+"base": "Node2D",
+"class": "LayeredSprite",
+"language": "GDScript",
+"path": "res://LayeredSprite.gd"
+}, {
+"base": "Node",
+"class": "LayeredSpriteCloset",
+"language": "GDScript",
+"path": "res://LayeredSpriteCloset.gd"
+} ]
 _global_script_class_icons={
-
+"DataContainer": "",
+"HeaderContainer": "",
+"LayerGroup": "",
+"LayeredSprite": "",
+"LayeredSpriteCloset": ""
 }
 
 [application]
