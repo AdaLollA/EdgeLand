@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/head.png" type="Texture" id=4]
 [ext_resource path="res://CharacterUI.gd" type="Script" id=5]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 45.5808, 54.6117 )
 
 [sub_resource type="StyleBoxFlat" id=2]
@@ -58,7 +58,7 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.525635, 9.99997 )
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="CharacterUI" type="Control" parent="."]
 margin_right = 40.0

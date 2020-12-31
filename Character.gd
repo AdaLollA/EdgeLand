@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var bullet = preload("res://Bullet.tscn")
+
 # mechanical
 export (int) var faction = 0
 export (int) var speed = 200
@@ -20,6 +22,7 @@ var selected = false
 
 func _ready():
 	target = get_transform().get_origin()
+	fire()
 
 func _input(event):
 	if event.is_action_pressed('right_click') && selected:
@@ -35,3 +38,10 @@ func _on_Character_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed('click'):
 		selected = !selected
 		$CharacterUI.updateNameUI()
+
+func fire():
+	var bulletInstance = bullet.instance()
+	bulletInstance.position = position
+	bulletInstance.rotation_degrees = rotation_degrees
+	bulletInstance.apply_impulse(Vector2(), Vector2(200, 0).rotated(rotation))
+	get_node("/root/root/GameManager").add_child(bulletInstance)
