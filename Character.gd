@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 # mechanical
+export (int) var faction = 0
 export (int) var speed = 200
 export (int) var health = 100
 
@@ -8,8 +9,6 @@ export (int) var health = 100
 export var characterName = 'Name'
 export (float) var width = 0.7
 export (Color) var color = Color('F1C27D')
-## var colors = ['FFDBAC', 'F1C27D', 'E0AC69', 'C68642', '8D5524']
-## var color = colors[randi()%5]
 
 # movement
 var target = Vector2()
