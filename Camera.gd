@@ -9,4 +9,3 @@ func _input(event):
 	elif event.is_action_pressed('zoom_in') && zoom.x > 0.5:
 		zoom.x -= granularity
 		zoom.y -= granularity
-	print(zoom.x)

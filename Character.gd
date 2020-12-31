@@ -22,7 +22,7 @@ func _ready():
 	target = get_transform().get_origin()
 
 func _input(event):
-	if event.is_action_pressed('click'):
+	if event.is_action_pressed('click') && selected:
 		target = get_global_mouse_position()
 
 func _physics_process(delta):
@@ -30,3 +30,10 @@ func _physics_process(delta):
 	# look_at(target)
 	if position.distance_to(target) > 5:
 		velocity = move_and_slide(velocity)
+
+func _on_Character_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed('click'):
+		print('clicked')
+		selected = !selected
+		$CharacterUI.updateNameUI()
+	pass # Replace with function body.
