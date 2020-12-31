@@ -35,4 +35,3 @@ func _on_Character_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed('click'):
 		selected = !selected
 		$CharacterUI.updateNameUI()
-		print('click')

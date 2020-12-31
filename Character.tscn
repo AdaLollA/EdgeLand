@@ -6,9 +6,8 @@
 [ext_resource path="res://assets/head.png" type="Texture" id=4]
 [ext_resource path="res://CharacterUI.gd" type="Script" id=5]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 25.9385
-height = 56.9193
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 45.5808, 54.6117 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.745098, 0.117647, 0.117647, 1 )
@@ -58,8 +57,8 @@ scale = Vector2( 0.725, 1 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 10 )
-shape = SubResource( 1 )
+position = Vector2( -0.525635, 9.99997 )
+shape = SubResource( 6 )
 
 [node name="CharacterUI" type="Control" parent="."]
 margin_right = 40.0
