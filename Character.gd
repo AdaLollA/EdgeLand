@@ -1,16 +1,23 @@
 extends KinematicBody2D
 
-export var characterName = 'Name'
+# mechanical
 export (int) var speed = 200
 export (int) var health = 100
 
-export (int) var width = 100
+# visual
+export var characterName = 'Name'
+export (float) var width = 0.7
+export (Color) var color = Color('F1C27D')
+## var colors = ['FFDBAC', 'F1C27D', 'E0AC69', 'C68642', '8D5524']
+## var color = colors[randi()%5]
 
-var progress = 100
-var selected = false
-
+# movement
 var target = Vector2()
 var velocity = Vector2()
+
+# misc
+var progress = 100
+var selected = false
 
 func _ready():
 	target = get_transform().get_origin()
