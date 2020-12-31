@@ -91,7 +91,7 @@ margin_right = 27.0
 margin_bottom = 55.0
 custom_styles/fg = SubResource( 4 )
 custom_styles/bg = SubResource( 5 )
-value = 50.0
+value = 75.0
 percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
