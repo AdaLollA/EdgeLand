@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Character.gd" type="Script" id=1]
+[ext_resource path="res://addons/LayeredSprite/LayeredSprite.gd" type="Script" id=2]
+[ext_resource path="res://assets/body.png" type="Texture" id=3]
+[ext_resource path="res://assets/head.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 25.9385
+height = 56.9193
+
+[node name="Character" type="KinematicBody2D"]
+position = Vector2( 500, 200 )
+script = ExtResource( 1 )
+
+[node name="LayeredSprite" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Head" type="Sprite" parent="LayeredSprite"]
+texture = ExtResource( 4 )
+
+[node name="Body" type="Sprite" parent="LayeredSprite"]
+scale = Vector2( 0.725, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 10 )
+shape = SubResource( 1 )
+
+[node name="Name" type="RichTextLabel" parent="."]
+margin_left = -46.0
+margin_top = 65.0
+margin_right = 54.0
+margin_bottom = 85.0
+grow_horizontal = 2
+rect_min_size = Vector2( 100, 20 )
+bbcode_enabled = true
+bbcode_text = "[center][u]Name[/u][/center]"
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}

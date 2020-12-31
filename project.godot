@@ -19,7 +19,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://godot_table/HeaderContainer.gd"
 }, {
-"base": "Reference",
+"base": "Resource",
 "class": "LayerGroup",
 "language": "GDScript",
 "path": "res://addons/LayeredSprite/LayerGroup.gd"
@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/LayeredSprite/LayeredSprite.gd"
 }, {
-"base": "Reference",
+"base": "Node",
 "class": "LayeredSpriteCloset",
 "language": "GDScript",
 "path": "res://addons/LayeredSprite/LayeredSpriteCloset.gd"
