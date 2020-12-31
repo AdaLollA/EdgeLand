@@ -1,6 +1,21 @@
-extends Node2D
+extends KinematicBody2D
 
-var speed = 150
+export (int) var speed = 200
 
-func _process(delta):
-	move_local_x(speed*delta)
+var target = Vector2()
+var velocity = Vector2()
+
+func _ready():
+	target = get_transform().get_origin()
+	print(get_transform().get_origin())
+	print(target)
+
+func _input(event):
+	if event.is_action_pressed('click'):
+		target = get_global_mouse_position()
+
+func _physics_process(delta):
+	velocity = position.direction_to(target) * speed
+	# look_at(target)
+	if position.distance_to(target) > 5:
+		velocity = move_and_slide(velocity)
