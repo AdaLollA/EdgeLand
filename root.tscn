@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/body.png" type="Texture" id=2]
 [ext_resource path="res://assets/head.png" type="Texture" id=3]
 [ext_resource path="res://Character.gd" type="Script" id=4]
-[ext_resource path="res://LayeredSprite.gd" type="Script" id=5]
+[ext_resource path="res://addons/LayeredSprite/LayeredSprite.gd" type="Script" id=5]
 
 [node name="root" type="Node2D"]
 script = ExtResource( 1 )
@@ -33,11 +33,3 @@ polygon = PoolVector2Array( -45.6992, 63.6072, -43.4518, 37.3869, -36.7094, 17.1
 [node name="Weapon" type="Node2D" parent="Gear"]
 
 [node name="Appearal" type="Node2D" parent="Gear"]
-
-[node name="GridManager" type="Node2D" parent="."]
-
-[node name="CollisionMap" type="Area2D" parent="GridManager"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GridManager/CollisionMap"]
-visible = false
-polygon = PoolVector2Array( 180.445, 147.284, 163.608, 451.471, 340.957, 446.982, 317.386, 264.02, 701.268, 249.428, 657.492, 461.574, 856.167, 457.084, 859.535, 112.488, 178.2, 92.2836 )

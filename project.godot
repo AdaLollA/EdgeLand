@@ -19,20 +19,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://godot_table/HeaderContainer.gd"
 }, {
-"base": "Resource",
+"base": "Reference",
 "class": "LayerGroup",
 "language": "GDScript",
-"path": "res://LayerGroup.gd"
+"path": "res://addons/LayeredSprite/LayerGroup.gd"
 }, {
-"base": "Node2D",
+"base": "Reference",
 "class": "LayeredSprite",
 "language": "GDScript",
-"path": "res://LayeredSprite.gd"
+"path": "res://addons/LayeredSprite/LayeredSprite.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "LayeredSpriteCloset",
 "language": "GDScript",
-"path": "res://LayeredSpriteCloset.gd"
+"path": "res://addons/LayeredSprite/LayeredSpriteCloset.gd"
 } ]
 _global_script_class_icons={
 "DataContainer": "",
@@ -45,8 +45,14 @@ _global_script_class_icons={
 [application]
 
 config/name="EdgeLand"
-run/main_scene="res://root.tscn"
+run/main_scene="res://addons/tilesample/Game.tscn"
 config/icon="res://icon.png"
+
+[display]
+
+window/size/width=960
+window/size/height=540
+window/size/resizable=false
 
 [rendering]
 
