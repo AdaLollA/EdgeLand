@@ -77,6 +77,13 @@ right_click={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="UI"
+2d_physics/layer_2="Ground"
+2d_physics/layer_3="Projectiles"
+2d_physics/layer_4="Air"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"

@@ -7,7 +7,7 @@
 [ext_resource path="res://CharacterUI.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40.3801, 51.6864 )
+extents = Vector2( 40.3801, 54.5163 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 42.0868, 54.5841 )
@@ -45,7 +45,7 @@ corner_radius_bottom_left = 2
 
 [node name="Character" type="KinematicBody2D"]
 position = Vector2( 50, 50 )
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.2, 0.2 )
 input_pickable = true
 script = ExtResource( 1 )
 
@@ -60,7 +60,7 @@ scale = Vector2( 0.725, 1 )
 texture = ExtResource( 3 )
 
 [node name="ClickBox" type="CollisionShape2D" parent="."]
-position = Vector2( -0.52565, 9.99998 )
+position = Vector2( -0.619514, 9.80499 )
 scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 
