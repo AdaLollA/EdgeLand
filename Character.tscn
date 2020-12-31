@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Character.gd" type="Script" id=1]
 [ext_resource path="res://addons/LayeredSprite/LayeredSprite.gd" type="Script" id=2]
 [ext_resource path="res://assets/body.png" type="Texture" id=3]
 [ext_resource path="res://assets/head.png" type="Texture" id=4]
+[ext_resource path="res://CharacterUI.gd" type="Script" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 25.9385
@@ -58,7 +59,15 @@ texture = ExtResource( 3 )
 position = Vector2( 0, 10 )
 shape = SubResource( 1 )
 
-[node name="HealthBar" type="ProgressBar" parent="."]
+[node name="CharacterUI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="CharacterUI"]
 margin_left = -42.0
 margin_top = 67.0
 margin_right = 41.0
@@ -71,7 +80,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="RichTextLabel" parent="."]
+[node name="Name" type="RichTextLabel" parent="CharacterUI"]
 margin_left = -42.0
 margin_top = 68.0
 margin_right = 41.0
@@ -84,7 +93,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="CharacterUI"]
 margin_left = -29.0
 margin_top = 41.0
 margin_right = 27.0

@@ -1,6 +1,21 @@
 class_name LayeredSprite
 extends Node2D
 
+var colors = ['FFDBAC', 'F1C27D', 'E0AC69', 'C68642', '8D5524']
+
+func _ready():
+	updateBody()
+
+func updateBody():
+	# body width
+	get_parent().width
+	
+	# body color
+	var color = colors[randi()%5]
+	$Body.modulate = Color(color)
+	$Head.modulate = Color(color)
+	pass
+
 # LayeredSprite, a node to manage separated Sprite and/or AnimatedSprite
 # nodes to make the illusion of them working as one, while being able
 # to modify layers individualy.
