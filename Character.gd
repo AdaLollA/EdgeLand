@@ -41,7 +41,13 @@ func _on_Character_input_event(viewport, event, shape_idx):
 
 func fire():
 	var bulletInstance = bullet.instance()
-	bulletInstance.position = position
+	bulletInstance.position = position + Vector2(20,0)
 	bulletInstance.rotation_degrees = rotation_degrees
 	bulletInstance.apply_impulse(Vector2(), Vector2(200, 0).rotated(rotation))
 	get_node("/root/root/GameManager").add_child(bulletInstance)
+
+
+func _on_HurtBox_body_entered(body):
+	if 'Bullet' in body.name:
+		print('hit')
+	pass # Replace with function body.

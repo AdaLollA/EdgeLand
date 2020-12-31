@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Character.gd" type="Script" id=1]
 [ext_resource path="res://addons/LayeredSprite/LayeredSprite.gd" type="Script" id=2]
@@ -7,7 +7,10 @@
 [ext_resource path="res://CharacterUI.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 45.5808, 54.6117 )
+extents = Vector2( 40.3801, 51.6864 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 42.0868, 54.5841 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.745098, 0.117647, 0.117647, 1 )
@@ -41,7 +44,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [node name="Character" type="KinematicBody2D"]
-position = Vector2( 500, 200 )
+position = Vector2( 50, 50 )
 scale = Vector2( 0.4, 0.4 )
 input_pickable = true
 script = ExtResource( 1 )
@@ -56,9 +59,17 @@ texture = ExtResource( 4 )
 scale = Vector2( 0.725, 1 )
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.525635, 9.99997 )
+[node name="ClickBox" type="CollisionShape2D" parent="."]
+position = Vector2( -0.52565, 9.99998 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+scale = Vector2( 1, 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2( -0.744095, 9.42519 )
+shape = SubResource( 6 )
 
 [node name="CharacterUI" type="Control" parent="."]
 margin_right = 40.0
@@ -107,3 +118,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="input_event" from="." to="." method="_on_Character_input_event"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
