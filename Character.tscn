@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Character.gd" type="Script" id=1]
 [ext_resource path="res://addons/LayeredSprite/LayeredSprite.gd" type="Script" id=2]
@@ -8,6 +8,37 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 25.9385
 height = 56.9193
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.745098, 0.117647, 0.117647, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.439216, 0.439216, 0.439216, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.243137, 0.490196, 0.188235, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.215686, 0.439216, 0.168627, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.32, 0.32, 0.32, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.18, 0.18, 0.18, 1 )
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="Character" type="KinematicBody2D"]
 position = Vector2( 500, 200 )
@@ -27,16 +58,41 @@ texture = ExtResource( 3 )
 position = Vector2( 0, 10 )
 shape = SubResource( 1 )
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = -42.0
+margin_top = 67.0
+margin_right = 41.0
+margin_bottom = 83.0
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+value = 80.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Name" type="RichTextLabel" parent="."]
-margin_left = -46.0
-margin_top = 65.0
-margin_right = 54.0
-margin_bottom = 85.0
+margin_left = -42.0
+margin_top = 68.0
+margin_right = 41.0
+margin_bottom = 83.0
 grow_horizontal = 2
-rect_min_size = Vector2( 100, 20 )
 bbcode_enabled = true
 bbcode_text = "[center][u]Name[/u][/center]"
 text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -29.0
+margin_top = 41.0
+margin_right = 27.0
+margin_bottom = 55.0
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
+value = 50.0
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }

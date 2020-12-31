@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export (int) var speed = 200
+export (int) var health = 100
 export var characterName = 'Name'
 
 var target = Vector2()
@@ -8,7 +9,8 @@ var velocity = Vector2()
 
 func _ready():
 	target = get_transform().get_origin()
-	updateName(characterName)
+	updateNameUI()
+	updateHealthUI()
 
 func _input(event):
 	if event.is_action_pressed('click'):
@@ -20,5 +22,8 @@ func _physics_process(delta):
 	if position.distance_to(target) > 5:
 		velocity = move_and_slide(velocity)
 
-func updateName(name):
-	$Name.bbcode_text = '[center]' + name + '[/center]'
+func updateNameUI():
+	$Name.bbcode_text = '[center]' + characterName
+
+func updateHealthUI():
+	$HealthBar.value = health
