@@ -91,3 +91,5 @@ script = ExtResource( 2 )
 position = Vector2( 480, 270 )
 current = true
 script = ExtResource( 3 )
+maxZoom = 0.8
+minZoom = 0.3

@@ -7,6 +7,9 @@ export (float) var minZoom = 0.1
 var previousDragPosition = null
 var drag = false
 
+func _ready():
+	zoom.x = maxZoom
+	zoom.y = maxZoom
 
 func _input(event):
 	# zoom
@@ -24,12 +27,8 @@ func _input(event):
 	elif event.is_action_released('camera_drag'):
 		drag = false
 
-func _physics_process(delta):
+func _process(delta):
 	if drag:
 		var deltaTransform = previousDragPosition - get_local_mouse_position()
 		previousDragPosition = get_local_mouse_position()
 		transform.origin += deltaTransform
-		print(deltaTransform)
-
-func _process(delta):
-	pass
