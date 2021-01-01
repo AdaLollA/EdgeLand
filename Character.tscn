@@ -72,6 +72,7 @@ position = Vector2( 0, 9.439 )
 shape = SubResource( 7 )
 
 [node name="ClickBox" type="Area2D" parent="."]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickBox"]
 position = Vector2( 0, 9.805 )
