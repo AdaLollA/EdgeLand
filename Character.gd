@@ -45,11 +45,14 @@ func fire():
 func _on_HurtBox_body_entered(body):
 	if 'Bullet' in body.name:
 		health -= 10
-		$CharacterUI.updateUI()
+		updateUI()
 		body.queue_free()
 
 
 func _on_ClickBox_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed('click'):
 		selected = !selected
-		$CharacterUI.updateNameUI()
+		updateUI()
+
+func updateUI():
+	$CharacterUI.updateNameUI()
