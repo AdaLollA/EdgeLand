@@ -4,7 +4,7 @@ var bullet = preload("res://Bullet.tscn")
 
 # mechanical
 export (int) var faction = 0
-export (int) var speed = 200
+export (int) var speed = 50
 export (int) var health = 100
 
 # visual
@@ -26,12 +26,14 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed('right_click') && selected:
-		target = get_global_mouse_position()
+		var tile = get_global_mouse_position() / 16
+		tile = Vector2(int(tile.x), int(tile.y)) + Vector2(0.5, 0.5)
+		target = tile * 16
 
 func _physics_process(delta):
 	velocity = position.direction_to(target) * speed
 	# look_at(target)
-	if position.distance_to(target) > 5:
+	if position.distance_to(target) > 1:
 		velocity = move_and_slide(velocity)
 
 func fire():
