@@ -6,24 +6,24 @@
 [ext_resource path="res://assets/head.png" type="Texture" id=4]
 [ext_resource path="res://CharacterUI.gd" type="Script" id=5]
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 24.0003
 height = 60.791
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 44.972, 55.0567 )
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=3]
 radius = 17.2305
 height = 35.5227
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0.2, 0.0392157, 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.439216, 0.439216, 0.439216, 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.243137, 0.490196, 0.188235, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -35,7 +35,7 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.32, 0.32, 0.32, 1 )
 border_width_left = 1
 border_width_top = 1
@@ -66,27 +66,24 @@ scale = Vector2( 0.725, 1 )
 texture = ExtResource( 3 )
 
 [node name="HurtBox" type="Area2D" parent="."]
-scale = Vector2( 1, 1 )
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2( 0, 9.439 )
-shape = SubResource( 7 )
+shape = SubResource( 1 )
 
 [node name="ClickBox" type="Area2D" parent="."]
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickBox"]
 position = Vector2( 0, 9.805 )
-scale = Vector2( 1, 1 )
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 46.604 )
 rotation = -1.5708
-scale = Vector2( 1, 1 )
-shape = SubResource( 8 )
+shape = SubResource( 3 )
 
 [node name="CharacterUI" type="Control" parent="."]
 margin_right = 40.0
@@ -101,8 +98,8 @@ margin_left = -42.0
 margin_top = 67.0
 margin_right = 41.0
 margin_bottom = 83.0
-custom_styles/fg = SubResource( 9 )
-custom_styles/bg = SubResource( 3 )
+custom_styles/fg = SubResource( 4 )
+custom_styles/bg = SubResource( 5 )
 value = 80.0
 percent_visible = false
 __meta__ = {
@@ -127,8 +124,8 @@ margin_left = -29.0
 margin_top = 41.0
 margin_right = 27.0
 margin_bottom = 55.0
-custom_styles/fg = SubResource( 4 )
-custom_styles/bg = SubResource( 5 )
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
 value = 75.0
 percent_visible = false
 __meta__ = {
