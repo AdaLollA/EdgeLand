@@ -29,3 +29,6 @@ func showPath(path: PoolVector2Array) -> int:
 	$Paths.add_child(line, nextPathId)
 	nextPathId += 1
 	return nextPathId-1
+
+func removePath(id: int):
+	$Paths.remove_child(get_child(id))

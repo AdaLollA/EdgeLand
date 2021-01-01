@@ -16,6 +16,7 @@ export (int) var speed = 50
 var path = PoolVector2Array() setget setPath
 var target = Vector2()
 var velocity = Vector2()
+var current_path_id = null
 
 # misc
 var progress = 100
@@ -35,14 +36,11 @@ func moveTo(value: Vector2):
 	tile = Vector2(int(tile.x), int(tile.y)) + Vector2(0.5, 0.5)
 	target = tile * 16
 	var newPath = get_node("/root/root/Navigation").get_simple_path(global_position, target)
-	get_node("/root/root/GameManager").showPath(newPath)
+	if current_path_id != -1:
+		# todo
+		get_node("/root/root/GameManager").removePath(current_path_id)
+	current_path_id = get_node("/root/root/GameManager").showPath(newPath)
 	setPath(newPath)
-
-#func _physics_process(delta):
-#	velocity = position.direction_to(target) * speed
-#	# look_at(target)
-#	if position.distance_to(target) > 1:
-#		velocity = move_and_slide(velocity)
 
 func fire():
 	var bulletInstance = bullet.instance()
@@ -50,7 +48,6 @@ func fire():
 	bulletInstance.rotation_degrees = rotation_degrees
 	bulletInstance.apply_impulse(Vector2(), Vector2(200, 0).rotated(rotation))
 	get_node("/root/root/GameManager").add_child(bulletInstance)
-
 
 func _on_HurtBox_body_entered(body):
 	if 'Bullet' in body.name:
