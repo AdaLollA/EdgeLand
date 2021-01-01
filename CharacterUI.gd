@@ -9,10 +9,13 @@ func updateUI():
 	updateProgressUI()
 
 func updateNameUI():
+	var name = '[center]'
 	if get_parent().selected:
-		$Name.bbcode_text = '[center]' + '[u]' + get_parent().characterName
-	else:
-		$Name.bbcode_text = '[center]' + get_parent().characterName
+		name += '[u]'
+	if get_parent().faction != 0:
+		name += '[color=#900000]'
+	name += get_parent().characterName
+	$Name.bbcode_text = name
 
 func updateHealthUI():
 	$HealthBar.value = get_parent().health

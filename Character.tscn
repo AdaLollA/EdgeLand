@@ -82,7 +82,7 @@ margin_right = 41.0
 margin_bottom = 83.0
 grow_horizontal = 2
 bbcode_enabled = true
-bbcode_text = "[center][u]Name[/u][/center]"
+bbcode_text = "[center][u]Name"
 text = "Name"
 __meta__ = {
 "_edit_use_anchors_": false
