@@ -34,11 +34,6 @@ func _physics_process(delta):
 	if position.distance_to(target) > 5:
 		velocity = move_and_slide(velocity)
 
-func _on_Character_input_event(viewport, event, shape_idx):
-	if event.is_action_pressed('click'):
-		selected = !selected
-		$CharacterUI.updateNameUI()
-
 func fire():
 	var bulletInstance = bullet.instance()
 	bulletInstance.position = position + Vector2(20,0)
@@ -52,3 +47,9 @@ func _on_HurtBox_body_entered(body):
 		health -= 10
 		$CharacterUI.updateUI()
 		body.queue_free()
+
+
+func _on_ClickBox_input_event(viewport, event, shape_idx):
+	if event.is_action_pressed('click'):
+		selected = !selected
+		$CharacterUI.updateNameUI()
