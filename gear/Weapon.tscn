@@ -11,5 +11,8 @@ texture = ExtResource( 1 )
 vframes = 2
 hframes = 4
 
+[node name="Handle" type="Position2D" parent="."]
+position = Vector2( -8, 0 )
+
 [node name="Muzzle" type="Position2D" parent="."]
 position = Vector2( 31, -1 )

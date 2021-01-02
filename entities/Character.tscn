@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entities/Character.gd" type="Script" id=1]
 [ext_resource path="res://addons/LayeredSprite/LayeredSprite.gd" type="Script" id=2]
 [ext_resource path="res://entities/CharacterUI.gd" type="Script" id=3]
 [ext_resource path="res://assets/body.png" type="Texture" id=4]
 [ext_resource path="res://assets/head.png" type="Texture" id=5]
+[ext_resource path="res://gear/Weapon.tscn" type="PackedScene" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.5
@@ -131,5 +132,8 @@ percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Weapon" parent="." instance=ExtResource( 6 )]
+scale = Vector2( 0.4, 0.4 )
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 [connection signal="input_event" from="ClickBox" to="." method="_on_ClickBox_input_event"]
