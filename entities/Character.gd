@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var bullet = preload("res://Bullet.tscn")
+var bullet = preload("res://gear/Projectile.tscn")
 
 # mechanics
 export (int) var faction = 0
@@ -35,10 +35,10 @@ func moveTo(value: Vector2):
 	var tile = value / 16
 	tile = Vector2(int(tile.x), int(tile.y)) + Vector2(0.5, 0.5)
 	target = tile * 16
-	var newPath = get_node("/root/root/Navigation").get_simple_path(global_position, target)
+	var newPath = get_node("/root/Game/Navigation").get_simple_path(global_position, target)
 	if current_path != null:
 		current_path.queue_free()
-	current_path = get_node("/root/root/GameManager").showPath(newPath)
+	current_path = get_node("/root/Game/GameManager").showPath(newPath)
 	setPath(newPath)
 
 func fire():
@@ -46,7 +46,7 @@ func fire():
 	bulletInstance.position = position + Vector2(20,0)
 	bulletInstance.rotation_degrees = rotation_degrees
 	bulletInstance.apply_impulse(Vector2(), Vector2(200, 0).rotated(rotation))
-	get_node("/root/root/GameManager").add_child(bulletInstance)
+	get_node("/root/Game/GameManager").add_child(bulletInstance)
 
 func _on_HurtBox_body_entered(body):
 	if 'Bullet' in body.name:

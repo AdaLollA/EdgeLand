@@ -1,6 +1,6 @@
 extends Node2D
 
-var character = preload("res://Character.tscn")
+var character = preload("res://entities/Character.tscn")
 
 var colors = ['FFDBAC', 'F1C27D', 'E0AC69', 'C68642', '8D5524']
 

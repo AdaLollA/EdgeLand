@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Character.gd" type="Script" id=1]
+[ext_resource path="res://entities/Character.gd" type="Script" id=1]
 [ext_resource path="res://addons/LayeredSprite/LayeredSprite.gd" type="Script" id=2]
-[ext_resource path="res://assets/body.png" type="Texture" id=3]
-[ext_resource path="res://assets/head.png" type="Texture" id=4]
-[ext_resource path="res://CharacterUI.gd" type="Script" id=5]
+[ext_resource path="res://entities/CharacterUI.gd" type="Script" id=3]
+[ext_resource path="res://assets/body.png" type="Texture" id=4]
+[ext_resource path="res://assets/head.png" type="Texture" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.5
@@ -58,11 +58,11 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Body" type="Sprite" parent="LayeredSprite"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 hframes = 4
 
 [node name="Head" type="Sprite" parent="LayeredSprite"]
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 hframes = 4
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -88,7 +88,7 @@ shape = SubResource( 3 )
 [node name="CharacterUI" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 5 )
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -121,9 +121,9 @@ __meta__ = {
 
 [node name="ProgressBar" type="ProgressBar" parent="CharacterUI"]
 margin_left = -10.75
-margin_top = 8.5
+margin_top = 4.5
 margin_right = 11.25
-margin_bottom = 14.5
+margin_bottom = 10.5
 custom_styles/fg = SubResource( 6 )
 custom_styles/bg = SubResource( 7 )
 value = 75.0

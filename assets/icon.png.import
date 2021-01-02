@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/obstacle.png-a8ff441281f213976a6c0d794f1db3da.stex"
+path="res://.import/icon.png-b6a7fb2db36edd3d95dc42f1dc8c1c5d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/tilesample/obstacle.png"
-dest_files=[ "res://.import/obstacle.png-a8ff441281f213976a6c0d794f1db3da.stex" ]
+source_file="res://assets/icon.png"
+dest_files=[ "res://.import/icon.png-b6a7fb2db36edd3d95dc42f1dc8c1c5d.stex" ]
 
 [params]
 
