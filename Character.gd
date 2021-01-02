@@ -92,15 +92,21 @@ func move_along_path(distance: float):
 		
 		# look direction
 		if path.size() > 0:
-			var dirVector: Vector2 = (path[1] - position)
-			print(dirVector.normalized())
-			if dirVector.x >= 0.5 and dirVector.y < 0.5:
-				print('a')
-			elif dirVector.x <= 0 and dirVector.y < -0.5:
-				print('b')
+			print(get_look_direction(path[1]))
 		
 		# remove finished path section
 		path.remove(0)
+
+func get_look_direction(target: Vector2) -> String:
+	var angle = rad2deg((target - position).angle())
+	if angle <= -(45) and angle >= -(45+90):
+		return 'up'
+	elif angle >= -(45+90) and angle >= (45+90):
+		return 'left'
+	elif angle >= -(45) and angle <= (45):
+		return 'right'
+	else:# angle >= (45) and angle <= (45+90):
+		return 'down'
 
 func look(dir: String):
 	$LayeredSprite.look(dir)
