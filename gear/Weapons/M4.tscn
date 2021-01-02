@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gear/Weapon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gear/Weapons/M4.gd" type="Script" id=2]
+
+[node name="M4" instance=ExtResource( 1 )]
+script = ExtResource( 2 )

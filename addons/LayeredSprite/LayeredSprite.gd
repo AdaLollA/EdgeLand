@@ -14,7 +14,6 @@ func updateBody():
 	pass
 
 func look(dir: String):
-	print(dir)
 	if dir == 'down':
 		set_frame_data(0)
 	elif dir == 'up':

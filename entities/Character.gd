@@ -33,7 +33,7 @@ func _input(event):
 
 func moveTo(value: Vector2):
 	var tile = value / 16
-	tile = Vector2(int(tile.x), int(tile.y)) + Vector2(0.5, 0.5)
+	tile = Vector2(int(tile.x) + 0.5, int(tile.y) + 0.5)
 	target = tile * 16
 	var newPath = get_node("/root/Game/Navigation").get_simple_path(global_position, target)
 	if current_path != null:
