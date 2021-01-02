@@ -20,7 +20,7 @@ var current_path: Line2D = null
 
 # misc
 var progress = 100
-var selected = false
+var selected = false setget selected_set
 
 func _ready():
 	set_process(false)
@@ -110,3 +110,7 @@ func get_look_direction(target: Vector2) -> String:
 
 func look(dir: String):
 	$LayeredSprite.look(dir)
+
+func selected_set(value):
+	selected = value
+	updateUI()

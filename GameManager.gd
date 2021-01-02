@@ -10,6 +10,12 @@ func _ready():
 	spawnCharacter('Ann', Vector2(200,50), 1)
 	pass 
 
+func _input(event):
+	# deselect all characters
+	if event.is_action_pressed('ui_cancel'):
+		for e in $Entities.get_children():
+			e.selected = false
+
 func spawnCharacter(name, position, faction, selected = false):
 	var newCharacter = character.instance()
 	newCharacter.position = position
