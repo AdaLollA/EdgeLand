@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-var bullet = preload("res://gear/Projectile.tscn")
-
 # mechanics
 export (int) var faction = 0
 export (int) var health = 100
@@ -25,7 +23,6 @@ var selected = false setget selected_set
 func _ready():
 	set_process(false)
 	target = get_transform().get_origin()
-	fire()
 
 func _input(event):
 	if event.is_action_pressed('right_click') && selected:
@@ -40,13 +37,6 @@ func moveTo(value: Vector2):
 		current_path.queue_free()
 	current_path = get_node("/root/Game/GameManager").showPath(newPath)
 	setPath(newPath)
-
-func fire():
-	var bulletInstance = bullet.instance()
-	bulletInstance.position = position + Vector2(20,0)
-	bulletInstance.rotation_degrees = rotation_degrees
-	bulletInstance.apply_impulse(Vector2(), Vector2(200, 0).rotated(rotation))
-	get_node("/root/Game/GameManager").add_child(bulletInstance)
 
 func _on_HurtBox_body_entered(body):
 	if 'Bullet' in body.name:
