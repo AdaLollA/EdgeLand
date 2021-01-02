@@ -2,6 +2,7 @@ extends Node2D
 
 var bullet = preload("res://gear/Projectile.tscn")
 
+# weapon stats
 export (int) var accuracy = 90
 export (int) var knock_back = 1
 export (int) var range_distance = 100
@@ -10,6 +11,7 @@ export (int) var fire_rate = 10
 export (int) var burst_size = 3
 export (int) var projectile_speed = 200
 
+# idle visuals
 var idle_rotation = 45
 var idle_position = Vector2(6,-5)
 
@@ -26,7 +28,7 @@ func _input(event: InputEvent):
 		shoot_at(event.position)
 
 func shoot_at(target: Vector2):
-	print(target)
+	print(rad2deg(global_position.angle_to(target))) # todo
 	var bulletInstance = bullet.instance()
 	bulletInstance.position = $Muzzle.global_position
 	bulletInstance.rotation_degrees = rotation_degrees
