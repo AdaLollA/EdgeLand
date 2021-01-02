@@ -36,8 +36,7 @@ func moveTo(value: Vector2):
 	tile = Vector2(int(tile.x), int(tile.y)) + Vector2(0.5, 0.5)
 	target = tile * 16
 	var newPath = get_node("/root/root/Navigation").get_simple_path(global_position, target)
-	if current_path_id != -1:
-		# todo
+	if current_path_id != null:
 		get_node("/root/root/GameManager").removePath(current_path_id)
 	current_path_id = get_node("/root/root/GameManager").showPath(newPath)
 	setPath(newPath)
@@ -78,11 +77,15 @@ func move_along_path(distance: float):
 	for i in range(path.size()):
 		var distance_to_next = start_point.distance_to(path[0])
 		if distance <= distance_to_next and distance >= 0:
+			# move
 			position = start_point.linear_interpolate(path[0], distance / distance_to_next)
+			get_node("/root/root/GameManager").updatePath(current_path_id, path)
 			break
 		elif path.size() == 1 and distance > distance_to_next:
+			# end of path
 			position = path[0]
 			set_process(false)
+			get_node("/root/root/GameManager").removePath(current_path_id)
 			break
 		distance += distance_to_next
 		start_point = path[0]

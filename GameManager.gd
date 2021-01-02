@@ -26,9 +26,25 @@ func spawnCharacter(name, position, faction, selected = false):
 func showPath(path: PoolVector2Array) -> int:
 	var line : Line2D = Line2D.new()
 	line.points = path
-	$Paths.add_child(line, nextPathId)
+	line.width = 1
+	line.default_color = '#212121'
+	$Paths.add_child(line, true)
 	nextPathId += 1
 	return nextPathId-1
 
+func updatePath(id: int, path: PoolVector2Array):
+	var strId = 'Line2D'
+	if id != 0:
+		strId += String(id)
+	for c in $Paths.get_children():
+		if c.name == strId:
+			c.points = path
+
 func removePath(id: int):
-	$Paths.remove_child(get_child(id))
+	var strId = 'Line2D'
+	if id != 0:
+		strId += String(id)
+	for c in $Paths.get_children():
+		if c.name == strId:
+			$Paths.remove_child(c)
+			nextPathId -= 1
