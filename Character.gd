@@ -16,7 +16,7 @@ export (int) var speed = 50
 var path = PoolVector2Array() setget setPath
 var target = Vector2()
 var velocity = Vector2()
-var current_path_id = null
+var current_path: Line2D = null
 
 # misc
 var progress = 100
@@ -36,9 +36,9 @@ func moveTo(value: Vector2):
 	tile = Vector2(int(tile.x), int(tile.y)) + Vector2(0.5, 0.5)
 	target = tile * 16
 	var newPath = get_node("/root/root/Navigation").get_simple_path(global_position, target)
-	if current_path_id != null:
-		get_node("/root/root/GameManager").removePath(current_path_id)
-	current_path_id = get_node("/root/root/GameManager").showPath(newPath)
+	if current_path != null:
+		current_path.queue_free()
+	current_path = get_node("/root/root/GameManager").showPath(newPath)
 	setPath(newPath)
 
 func fire():
@@ -79,13 +79,13 @@ func move_along_path(distance: float):
 		if distance <= distance_to_next and distance >= 0:
 			# move
 			position = start_point.linear_interpolate(path[0], distance / distance_to_next)
-			get_node("/root/root/GameManager").updatePath(current_path_id, path)
+			current_path.points = path
 			break
 		elif path.size() == 1 and distance > distance_to_next:
 			# end of path
 			position = path[0]
 			set_process(false)
-			get_node("/root/root/GameManager").removePath(current_path_id)
+			current_path.queue_free()
 			break
 		distance += distance_to_next
 		start_point = path[0]
