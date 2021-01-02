@@ -13,7 +13,7 @@ func _ready():
 func spawnCharacter(name, position, faction, selected = false):
 	var newCharacter = character.instance()
 	newCharacter.position = position
-	newCharacter.width = rand_range(0.3, 0.8)
+	newCharacter.width = rand_range(0.5, 1)
 	newCharacter.color = colors[randi()%5]
 	newCharacter.faction = faction
 	newCharacter.name = name
