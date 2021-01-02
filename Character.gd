@@ -92,7 +92,7 @@ func move_along_path(distance: float):
 		
 		# look direction
 		if path.size() > 0:
-			print(get_look_direction(path[1]))
+			$LayeredSprite.look(get_look_direction(path[1]))
 		
 		# remove finished path section
 		path.remove(0)

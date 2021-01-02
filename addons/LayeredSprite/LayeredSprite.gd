@@ -15,6 +15,18 @@ func updateBody():
 
 func look(dir: String):
 	print(dir)
+	if dir == 'down':
+		set_frame_data(0)
+	elif dir == 'up':
+		set_frame_data(1)
+	elif dir == 'left':
+		set_frame_data(2)
+	elif dir == 'right':
+		set_frame_data(3)
+
+func set_frame_data(frame: int):
+	$Head.frame = frame
+	$Body.frame = frame
 
 # LayeredSprite, a node to manage separated Sprite and/or AnimatedSprite
 # nodes to make the illusion of them working as one, while being able
