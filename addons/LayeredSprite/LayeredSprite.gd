@@ -13,6 +13,9 @@ func updateBody():
 	$Head.modulate = Color(get_parent().color)
 	pass
 
+func look(dir: String):
+	print(dir)
+
 # LayeredSprite, a node to manage separated Sprite and/or AnimatedSprite
 # nodes to make the illusion of them working as one, while being able
 # to modify layers individualy.

@@ -89,4 +89,18 @@ func move_along_path(distance: float):
 			break
 		distance += distance_to_next
 		start_point = path[0]
+		
+		# look direction
+		if path.size() > 0:
+			var dirVector: Vector2 = (path[1] - position)
+			print(dirVector.normalized())
+			if dirVector.x >= 0.5 and dirVector.y < 0.5:
+				print('a')
+			elif dirVector.x <= 0 and dirVector.y < -0.5:
+				print('b')
+		
+		# remove finished path section
 		path.remove(0)
+
+func look(dir: String):
+	$LayeredSprite.look(dir)
