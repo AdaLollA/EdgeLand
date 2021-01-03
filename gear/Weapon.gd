@@ -16,7 +16,7 @@ var idle_rotation = 45
 var idle_position = Vector2(6,-5)
 
 func _ready():
-	position -= $Handle.position
+	position = -$Handle.position
 	# take_idle_position()
 
 func take_idle_position():
@@ -25,10 +25,20 @@ func take_idle_position():
 
 func _input(event: InputEvent):
 	if event.is_action_pressed('click') and get_parent().selected:
-		shoot_at(event.position)
+		shoot_at(get_global_mouse_position())
 
 func shoot_at(target: Vector2):
-	print(rad2deg(global_position.angle_to(target))) # todo
+	look_at(target)
+	position = -$Handle.position.rotated(rotation)
+	
+	var angle = fmod(abs(rotation_degrees), 360)
+	print(angle)
+	
+	if angle > 90 and angle < 270:
+		print('left')
+	else:
+		print('right')
+	
 	var bulletInstance = bullet.instance()
 	bulletInstance.position = $Muzzle.global_position
 	bulletInstance.rotation_degrees = rotation_degrees
