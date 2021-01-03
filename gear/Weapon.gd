@@ -16,7 +16,7 @@ var idle_rotation = 45
 var idle_position = Vector2(6,-5)
 
 func _ready():
-	position = -$Handle.position
+	position = -$"Sprite/Handle".position
 	# take_idle_position()
 
 func take_idle_position():
@@ -28,19 +28,15 @@ func _input(event: InputEvent):
 		shoot_at(get_global_mouse_position())
 
 func shoot_at(target: Vector2):
+	# transform
 	look_at(target)
-	position = -$Handle.position.rotated(rotation)
-	
+	position = -$"Sprite/Handle".position.rotated(rotation)
 	var angle = fmod(abs(rotation_degrees), 360)
-	print(angle)
+	$Sprite.flip_v = angle > 90 and angle < 270
 	
-	if angle > 90 and angle < 270:
-		print('left')
-	else:
-		print('right')
-	
+	# fire bullet
 	var bulletInstance = bullet.instance()
-	bulletInstance.position = $Muzzle.global_position
+	bulletInstance.position = $"Sprite/Muzzle".global_position
 	bulletInstance.rotation_degrees = rotation_degrees
 	bulletInstance.apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
 	get_node("/root/Game/GameManager/Projectiles").add_child(bulletInstance)
