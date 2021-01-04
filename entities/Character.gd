@@ -6,7 +6,7 @@ export (int) var health = 100
 
 # visual
 export var characterName = 'Name'
-export (float) var width = 0.7
+export (float) var width = 1
 export (Color) var color = Color('F1C27D')
 
 # movement

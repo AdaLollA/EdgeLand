@@ -10,7 +10,7 @@ var size: int = 0
 # removing rogue bullet
 func _on_Timer_timeout():
 	queue_free()
-	print('removing rogue bullet')
+	print('removing rogue bullet - range property of projectile might be set wrong')
 
 func _ready():
 	# set origin for max range calculations
@@ -32,6 +32,5 @@ func _physics_process(delta):
 		var point = $Trail.points[size] * trail_length
 		$Trail.set_point_position(size, point)
 		size += 1
-		print($Trail.points)
 
 
