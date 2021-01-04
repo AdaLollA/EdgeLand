@@ -3,13 +3,13 @@
 [ext_resource path="res://gear/Projectile.gd" type="Script" id=1]
 [ext_resource path="res://assets/projectiles.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 1 )
 
-[sub_resource type="Curve" id=4]
+[sub_resource type="Curve" id=2]
 _data = [ Vector2( 0, 0.648649 ), 0.0, 0.0, 0, 0, Vector2( 0.294278, 0.572072 ), 0.0, 0.0, 0, 0, Vector2( 0.656676, 0.405405 ), 0.0, 0.0, 0, 0, Vector2( 0.990463, 0.117117 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=3]
 colors = PoolColorArray( 1, 1, 1, 0.54902, 1, 1, 1, 0 )
 
 [node name="Bullet" type="RigidBody2D"]
@@ -22,7 +22,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
@@ -33,7 +33,7 @@ autostart = true
 position = Vector2( -6, 0 )
 points = PoolVector2Array( 0, 0, -15, 0, -30, 0, -45, 0 )
 width = 6.0
-width_curve = SubResource( 4 )
+width_curve = SubResource( 2 )
 default_color = Color( 1, 1, 1, 1 )
-gradient = SubResource( 5 )
+gradient = SubResource( 3 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
