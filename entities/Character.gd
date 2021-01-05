@@ -70,6 +70,7 @@ func move_along_path(distance: float):
 			# move
 			position = start_point.linear_interpolate(path[0], distance / distance_to_next)
 			current_path.points = path
+			current_path.add_point(position, 0)
 			break
 		elif path.size() == 1 and distance > distance_to_next:
 			# end of path
@@ -77,6 +78,8 @@ func move_along_path(distance: float):
 			set_process(false)
 			current_path.queue_free()
 			break
+		
+		# called once a path section is cleared
 		distance += distance_to_next
 		start_point = path[0]
 		
