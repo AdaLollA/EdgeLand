@@ -73,23 +73,30 @@ func _on_RangeArea_body_exited(body):
 
 func fire(target: Vector2):
 	current_target_location = target
-	if $Cooldown.is_stopped():
+	if $AimTimer.is_stopped() and $BurstTimer.is_stopped() and active_burst_size <= 0:
 		take_aim()
 
 func take_aim():
-	$AimTime.start(charge_time)
-
-func _on_Cooldown_timeout():
-	take_aim()
+	if get_parent().selected:
+		print('taking aim')
+	$AimTimer.start(charge_time)
 
 func _on_AimTime_timeout():
 	set_active_burst_size(burst_size)
 
 func _on_BurstTimer_timeout():
-	# todo amount of spread, etc.
-	shoot_at(current_target_location)
+	if get_parent().selected:
+		print('tick ' + String(active_burst_size))
+	
+	if active_burst_size > 0:
+		# todo amount of spread, etc.
+		shoot_at(current_target_location)
+		active_burst_size -= 1
+		$BurstTimer.start(1.0 / fire_rate)
+	else:
+		$BurstTimer.stop()
+		take_aim()
 
 func set_active_burst_size(value):
 	active_burst_size = value
-	# todo start contnuous burst timer
-	# stop when active burst timer reaches 0
+	$BurstTimer.start(1.0 / fire_rate)
