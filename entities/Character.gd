@@ -23,6 +23,10 @@ var selected = false setget selected_set
 func _ready():
 	set_process(false)
 	target = get_transform().get_origin()
+	$Weapon.connect("salvo_fired",self,"handle_salvo_fired")
+
+func handle_salvo_fired():
+	_on_MindTick_timeout()
 
 func _input(event):
 	if event.is_action_pressed('right_click') && selected:

@@ -2,14 +2,16 @@ extends Node2D
 
 var bullet = preload("res://gear/Projectile.tscn")
 
+signal salvo_fired
+
 # weapon stats
-export (int) var accuracy = 90
-export (int) var knock_back = 1
-export (int) var range_distance = 200 setget set_range
-export (int) var charge_time = 1
-export (int) var fire_rate = 10
-export (int) var burst_size = 3
-export (int) var projectile_speed = 200
+export (int) var accuracy = 90							# o
+export (int) var stopping_power = 1						# o
+export (int) var range_distance = 500 setget set_range	# x
+export (int) var charge_time = 1						# x
+export (int) var fire_rate = 10							# x
+export (int) var burst_size = 3							# x
+export (int) var projectile_speed = 200					# x
 
 # scan values
 var bodies_in_range = []
@@ -48,20 +50,16 @@ func shoot_at(target: Vector2):
 	bulletInstance.apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
 	
 	# mechanics
-	bulletInstance.max_distance = range_distance
+	bulletInstance.max_distance = range_distance / 2.5 # why is 2.5 the correct value for 500 range here?
 	
 	# fire bullet
 	get_node("/root/Game/GameManager/Projectiles").add_child(bulletInstance)
 
 
 func set_range(value: int):
+	print('updating range')
 	range_distance = value
-	
-	# todo resize RangeArea/CollisionShape/Circleshape radius
-	
-	# todo call this funcion when a different weapon is equipped by the character 
-	# or his range related stats change
-	
+	$'RangeArea/CollisionShape2D'.shape.radius = range_distance
 	print('set range called')
 
 func _on_RangeArea_body_entered(body):
@@ -77,17 +75,12 @@ func fire(target: Vector2):
 		take_aim()
 
 func take_aim():
-	if get_parent().selected:
-		print('taking aim')
 	$AimTimer.start(charge_time)
 
 func _on_AimTime_timeout():
 	set_active_burst_size(burst_size)
 
 func _on_BurstTimer_timeout():
-	if get_parent().selected:
-		print('tick ' + String(active_burst_size))
-	
 	if active_burst_size > 0:
 		# todo amount of spread, etc.
 		shoot_at(current_target_location)
@@ -95,7 +88,7 @@ func _on_BurstTimer_timeout():
 		$BurstTimer.start(1.0 / fire_rate)
 	else:
 		$BurstTimer.stop()
-		take_aim()
+		emit_signal('salvo_fired')
 
 func set_active_burst_size(value):
 	active_burst_size = value
