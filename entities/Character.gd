@@ -110,8 +110,7 @@ func selected_set(value):
 
 func _on_MindTick_timeout():
 	for body in scan_for_enemies():
-		if selected:
-			print(body.name)
+		$Weapon.shoot_at(body.position)
 
 func scan_for_enemies() -> Array:
 	var enemies = []
