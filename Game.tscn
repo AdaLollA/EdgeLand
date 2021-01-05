@@ -63,14 +63,18 @@ script = ExtResource( 2 )
 maxZoom = 1.0
 minZoom = 0.3
 
-[node name="Interface" type="Control" parent="Camera"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera"]
+
+[node name="Interface" type="Control" parent="Camera/CanvasLayer"]
+margin_left = 480.0
+margin_top = 270.0
+margin_right = 520.0
+margin_bottom = 310.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Time" type="Control" parent="Camera/Interface"]
+[node name="Time" type="Control" parent="Camera/CanvasLayer/Interface"]
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 4 )
@@ -78,7 +82,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayPause" type="Button" parent="Camera/Interface/Time"]
+[node name="PlayPause" type="Button" parent="Camera/CanvasLayer/Interface/Time"]
 margin_left = 417.428
 margin_top = -261.687
 margin_right = 467.428
@@ -87,4 +91,4 @@ text = "pause"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Camera/Interface/Time/PlayPause" to="Camera/Interface/Time" method="_on_PlayPause_pressed"]
+[connection signal="pressed" from="Camera/CanvasLayer/Interface/Time/PlayPause" to="Camera/CanvasLayer/Interface/Time" method="_on_PlayPause_pressed"]
