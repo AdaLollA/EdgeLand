@@ -5,7 +5,7 @@ var bullet = preload("res://gear/Projectile.tscn")
 signal salvo_fired
 
 # weapon stats											# implemented
-export (int) var accuracy = 100							# x
+export (int) var accuracy = 50							# x
 export (int) var stopping_power = 1						# o
 export (int) var range_distance = 500 setget set_range	# x
 export (int) var charge_time = 1						# x
@@ -23,7 +23,7 @@ var idle_position = Vector2(6,-5)
 # combat
 var current_target_location: Vector2
 var active_burst_size = 0 setget set_active_burst_size
-var accuracy_impactfulness = 4000
+var accuracy_impactfulness = 100
 
 func _ready():
 	position = -$"Sprite/Handle".position
@@ -89,7 +89,7 @@ func _on_BurstTimer_timeout():
 			dx = -1 
 		if randi() % 2:
 			dy = -1 
-		var deviation = (1.0 / accuracy) * (randi() % accuracy_impactfulness)
+		var deviation = (100 - accuracy) * (randi() % accuracy_impactfulness) / 100
 		var deviation_vector = Vector2(deviation*dx, deviation*dy)
 		print(deviation_vector)
 		var shooting_at = current_target_location + deviation_vector # todo amount of spread

@@ -134,7 +134,7 @@ __meta__ = {
 
 [node name="Weapon" parent="." instance=ExtResource( 6 )]
 scale = Vector2( 0.4, 0.4 )
-accuracy = 100
+accuracy = 50
 stopping_power = 1
 range_distance = 500
 charge_time = 1
