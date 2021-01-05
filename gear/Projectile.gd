@@ -33,4 +33,6 @@ func _physics_process(delta):
 		$Trail.set_point_position(size, point)
 		size += 1
 
-
+# called when the projectile hits something
+func _on_Bullet_body_entered(body):
+	queue_free()
