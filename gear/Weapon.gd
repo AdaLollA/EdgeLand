@@ -18,6 +18,10 @@ var bodies_in_range = []
 var idle_rotation = 45
 var idle_position = Vector2(6,-5)
 
+# combat
+var current_target_location: Vector2
+var active_burst_size = 0 setget set_active_burst_size
+
 func _ready():
 	position = -$"Sprite/Handle".position
 	# take_idle_position()
@@ -37,12 +41,16 @@ func shoot_at(target: Vector2):
 	var angle = fmod(abs(rotation_degrees), 360)
 	$Sprite.flip_v = angle > 90 and angle < 270
 	
-	# fire bullet
+	# initialize
 	var bulletInstance = bullet.instance()
 	bulletInstance.position = $"Sprite/Muzzle".global_position
 	bulletInstance.rotation_degrees = rotation_degrees
 	bulletInstance.apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
+	
+	# mechanics
 	bulletInstance.max_distance = range_distance
+	
+	# fire bullet
 	get_node("/root/Game/GameManager/Projectiles").add_child(bulletInstance)
 
 
@@ -62,3 +70,26 @@ func _on_RangeArea_body_entered(body):
 
 func _on_RangeArea_body_exited(body):
 	bodies_in_range.erase(body)
+
+func fire(target: Vector2):
+	current_target_location = target
+	if $Cooldown.is_stopped():
+		take_aim()
+
+func take_aim():
+	$AimTime.start(charge_time)
+
+func _on_Cooldown_timeout():
+	take_aim()
+
+func _on_AimTime_timeout():
+	set_active_burst_size(burst_size)
+
+func _on_BurstTimer_timeout():
+	# todo amount of spread, etc.
+	shoot_at(current_target_location)
+
+func set_active_burst_size(value):
+	active_burst_size = value
+	# todo start contnuous burst timer
+	# stop when active burst timer reaches 0
