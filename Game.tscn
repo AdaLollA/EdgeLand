@@ -55,7 +55,7 @@ script = ExtResource( 3 )
 [node name="Projectiles" type="Node2D" parent="GameManager"]
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 160.139, 129.515 )
+position = Vector2( 480, 270 )
 current = true
 script = ExtResource( 2 )
 maxZoom = 0.8

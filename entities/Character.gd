@@ -107,3 +107,15 @@ func look(dir: String):
 func selected_set(value):
 	selected = value
 	updateUI()
+
+func _on_MindTick_timeout():
+	for body in scan_for_enemies():
+		if selected:
+			print(body.name)
+
+func scan_for_enemies() -> Array:
+	var enemies = []
+	for body in $Weapon.bodies_in_range:
+		if body.faction != faction:
+			enemies.append(body)
+	return enemies

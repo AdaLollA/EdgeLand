@@ -134,5 +134,9 @@ __meta__ = {
 
 [node name="Weapon" parent="." instance=ExtResource( 6 )]
 scale = Vector2( 0.4, 0.4 )
+
+[node name="MindTick" type="Timer" parent="."]
+autostart = true
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 [connection signal="input_event" from="ClickBox" to="." method="_on_ClickBox_input_event"]
+[connection signal="timeout" from="MindTick" to="." method="_on_MindTick_timeout"]

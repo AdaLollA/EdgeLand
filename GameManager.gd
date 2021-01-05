@@ -6,8 +6,8 @@ var colors = ['FFDBAC', 'F1C27D', 'E0AC69', 'C68642', '8D5524']
 
 func _ready():
 	randomize()
-	spawnCharacter('Gideon', Vector2(100,100), 0, true)
-	spawnCharacter('Ann', Vector2(200,50), 1)
+	spawnCharacter('Gideon', Vector2(500,200), 0, true)
+	spawnCharacter('Ann', Vector2(400,200), 1)
 	pass 
 
 func _input(event):
@@ -22,7 +22,7 @@ func spawnCharacter(name, position, faction, selected = false):
 	newCharacter.width = rand_range(0.5, 1.5)
 	newCharacter.color = colors[randi()%5]
 	newCharacter.faction = faction
-	newCharacter.name = name
+	newCharacter.characterName = name
 	newCharacter.selected = selected
 	$Entities.add_child(newCharacter)
 

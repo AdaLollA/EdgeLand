@@ -5,11 +5,14 @@ var bullet = preload("res://gear/Projectile.tscn")
 # weapon stats
 export (int) var accuracy = 90
 export (int) var knock_back = 1
-export (int) var range_distance = 100
+export (int) var range_distance = 200 setget set_range
 export (int) var charge_time = 1
 export (int) var fire_rate = 10
 export (int) var burst_size = 3
 export (int) var projectile_speed = 200
+
+# scan values
+var bodies_in_range = []
 
 # idle visuals
 var idle_rotation = 45
@@ -39,4 +42,23 @@ func shoot_at(target: Vector2):
 	bulletInstance.position = $"Sprite/Muzzle".global_position
 	bulletInstance.rotation_degrees = rotation_degrees
 	bulletInstance.apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
+	bulletInstance.max_distance = range_distance
 	get_node("/root/Game/GameManager/Projectiles").add_child(bulletInstance)
+
+
+func set_range(value: int):
+	range_distance = value
+	
+	# todo resize RangeArea/CollisionShape/Circleshape radius
+	
+	# todo call this funcion when a different weapon is equipped by the character 
+	# or his range related stats change
+	
+	print('set range called')
+
+func _on_RangeArea_body_entered(body):
+	if 'Character' in body.name:
+		bodies_in_range.append(body)
+
+func _on_RangeArea_body_exited(body):
+	bodies_in_range.erase(body)
