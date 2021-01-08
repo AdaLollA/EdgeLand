@@ -60,7 +60,6 @@ pause_mode = 2
 position = Vector2( 480, 270 )
 current = true
 script = ExtResource( 2 )
-maxZoom = 1.0
 minZoom = 0.3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera"]

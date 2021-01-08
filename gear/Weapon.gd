@@ -58,7 +58,6 @@ func shoot_at(target: Vector2):
 
 
 func set_range(value: int):
-	print('updating range')
 	range_distance = value
 	$'RangeArea/CollisionShape2D'.shape.radius = range_distance
 	print('set range called')
@@ -91,7 +90,6 @@ func _on_BurstTimer_timeout():
 			dy = -1 
 		var deviation = (100 - accuracy) * (randi() % accuracy_impactfulness) / 100
 		var deviation_vector = Vector2(deviation*dx, deviation*dy)
-		print(deviation_vector)
 		var shooting_at = current_target_location + deviation_vector # todo amount of spread
 		shoot_at(shooting_at)
 		active_burst_size -= 1
