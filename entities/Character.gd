@@ -124,10 +124,6 @@ func scan_for_enemies() -> Array:
 			# line of sight
 			var ray = $Sight
 			ray.cast_to = ((body.position + $CollisionShape2D.position) - position) * 2
-			
-			if selected:
-				print(ray.get_collider())
-			
-			# todo append if los
-			#enemies.append(body)
+			if selected and ray.get_collider() == body:
+				enemies.append(body)
 	return enemies
