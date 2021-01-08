@@ -35,4 +35,5 @@ func _physics_process(delta):
 
 # called when the projectile hits something
 func _on_Bullet_body_entered(body):
+	# todo dont interact with the character that made the shot
 	queue_free()
