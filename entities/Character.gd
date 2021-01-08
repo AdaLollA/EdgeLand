@@ -119,6 +119,15 @@ func _on_MindTick_timeout():
 func scan_for_enemies() -> Array:
 	var enemies = []
 	for body in $Weapon.bodies_in_range:
-		if body.faction != faction:
-			enemies.append(body)
+		# remove self and allied faction
+		if body != self && body.faction != faction:
+			# line of sight
+			var ray = $Sight
+			ray.cast_to = ((body.position + $CollisionShape2D.position) - position) * 2
+			
+			if selected:
+				print(ray.get_collider())
+			
+			# todo append if los
+			#enemies.append(body)
 	return enemies

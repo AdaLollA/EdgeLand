@@ -137,6 +137,11 @@ scale = Vector2( 0.4, 0.4 )
 
 [node name="MindTick" type="Timer" parent="."]
 autostart = true
+
+[node name="Sight" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 100, 0 )
+collision_mask = 2
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 [connection signal="input_event" from="ClickBox" to="." method="_on_ClickBox_input_event"]
 [connection signal="timeout" from="MindTick" to="." method="_on_MindTick_timeout"]
