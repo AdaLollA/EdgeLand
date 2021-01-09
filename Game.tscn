@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
 [ext_resource path="res://GameManager.gd" type="Script" id=3]
 [ext_resource path="res://interface/Time.gd" type="Script" id=4]
+[ext_resource path="res://interface/Characters.gd" type="Script" id=5]
 
 [node name="Game" type="Node2D"]
 
@@ -90,4 +91,32 @@ text = "pause"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Characters" type="Control" parent="Camera/CanvasLayer/Interface"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pawn" type="Control" parent="Camera/CanvasLayer/Interface/Characters"]
+margin_left = -33.0
+margin_top = -255.0
+margin_right = 7.0
+margin_bottom = -215.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="Camera/CanvasLayer/Interface/Characters/Pawn"]
+margin_left = -16.0
+margin_top = 16.0
+margin_right = 16.0
+margin_bottom = 48.0
+rect_rotation = -90.0
+value = 50.0
+percent_visible = false
+[connection signal="new_character" from="GameManager" to="GameManager" method="_on_GameManager_new_character"]
+[connection signal="new_character" from="GameManager" to="Camera/CanvasLayer/Interface/Characters" method="_on_GameManager_new_character"]
 [connection signal="pressed" from="Camera/CanvasLayer/Interface/Time/PlayPause" to="Camera/CanvasLayer/Interface/Time" method="_on_PlayPause_pressed"]

@@ -4,6 +4,8 @@ var character = preload("res://entities/Character.tscn")
 
 var colors = ['FFDBAC', 'F1C27D', 'E0AC69', 'C68642', '8D5524']
 
+signal new_character
+
 func _ready():
 	randomize()
 	spawnCharacter('Gideon', Vector2(500,200), 0, true)
@@ -25,6 +27,7 @@ func spawnCharacter(name, position, faction, selected = false):
 	newCharacter.characterName = name
 	newCharacter.selected = selected
 	$Entities.add_child(newCharacter)
+	emit_signal('new_character', newCharacter)
 
 func showPath(path: PoolVector2Array) -> Line2D:
 	var line : Line2D = Line2D.new()
