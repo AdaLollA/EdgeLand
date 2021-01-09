@@ -54,7 +54,7 @@ func _on_ClickBox_input_event(viewport, event, shape_idx):
 		updateUI()
 
 func updateUI():
-	$CharacterUI.updateNameUI()
+	$CharacterUI.updateUI()
 
 func setPath(value: PoolVector2Array):
 	path = value
