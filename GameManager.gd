@@ -9,6 +9,7 @@ signal new_character
 func _ready():
 	randomize()
 	spawnCharacter('Gideon', Vector2(500,200), 0, true)
+	spawnCharacter('Lucie', Vector2(600,200), 0, false)
 	spawnCharacter('Ann', Vector2(400,200), 1)
 	pass 
 

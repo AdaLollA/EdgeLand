@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://interface/Pawn.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.2, 0.0392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.439216, 0.439216, 0.439216, 1 )
+
+[node name="Pawn" type="MarginContainer"]
+margin_left = 85.0
+margin_right = 147.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 32, 45 )
+custom_constants/margin_right = 15
+custom_constants/margin_left = 15
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="."]
+margin_left = 15.0
+margin_right = 47.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 32, 45 )
+
+[node name="MoodBar" type="ProgressBar" parent="Control"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+value = 70.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthBar" type="ProgressBar" parent="Control"]
+margin_left = -7.0
+margin_top = 32.0
+margin_right = 39.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 46, 12 )
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 80.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="NameLabel" type="RichTextLabel" parent="Control"]
+margin_left = -18.0
+margin_top = 32.0
+margin_right = 52.0
+margin_bottom = 47.0
+grow_horizontal = 2
+rect_min_size = Vector2( 70, 15 )
+bbcode_enabled = true
+bbcode_text = "[center][u]Name"
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
