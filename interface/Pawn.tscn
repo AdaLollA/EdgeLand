@@ -27,9 +27,11 @@ margin_bottom = 45.0
 rect_min_size = Vector2( 32, 45 )
 
 [node name="MoodBar" type="ProgressBar" parent="Control"]
+margin_top = 32.0
 margin_right = 32.0
-margin_bottom = 32.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 32, 32 )
+rect_rotation = -90.0
 value = 70.0
 percent_visible = false
 __meta__ = {
