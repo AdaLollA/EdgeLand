@@ -107,9 +107,9 @@ __meta__ = {
 }
 
 [node name="Name" type="RichTextLabel" parent="CharacterUI"]
-margin_left = -20.75
+margin_left = -33.0
 margin_top = 18.0
-margin_right = 24.25
+margin_right = 37.0
 margin_bottom = 33.0
 grow_horizontal = 2
 bbcode_enabled = true
