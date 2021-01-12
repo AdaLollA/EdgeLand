@@ -7,6 +7,8 @@ export (float) var max_distance = 200
 
 var size: int = 0
 
+var source = null
+
 # removing rogue bullet
 func _on_Timer_timeout():
 	queue_free()
@@ -22,7 +24,7 @@ func _ready():
 		$Trail.set_point_position(i, scaled_down)
 
 func _physics_process(delta):
-		# remove bullet when it has reached its max range
+	# remove bullet when it has reached its max range
 	var distance: float = (origin - position).length()
 	if distance > max_distance:
 		queue_free()
@@ -36,4 +38,5 @@ func _physics_process(delta):
 # called when the projectile hits something
 func _on_Bullet_body_entered(body):
 	# todo dont interact with the character that made the shot
-	queue_free()
+	if body != source:
+		queue_free()

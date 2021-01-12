@@ -117,6 +117,6 @@ margin_bottom = 48.0
 rect_rotation = -90.0
 value = 50.0
 percent_visible = false
-[connection signal="new_character" from="GameManager" to="GameManager" method="_on_GameManager_new_character"]
 [connection signal="new_character" from="GameManager" to="Camera/CanvasLayer/Interface/Characters" method="_on_GameManager_new_character"]
+[connection signal="new_character" from="GameManager" to="GameManager" method="_on_GameManager_new_character"]
 [connection signal="pressed" from="Camera/CanvasLayer/Interface/Time/PlayPause" to="Camera/CanvasLayer/Interface/Time" method="_on_PlayPause_pressed"]

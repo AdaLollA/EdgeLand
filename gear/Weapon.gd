@@ -46,6 +46,7 @@ func shoot_at(target: Vector2):
 	
 	# initialize
 	var bulletInstance = bullet.instance()
+	bulletInstance.source = get_parent()
 	bulletInstance.position = $"Sprite/Muzzle".global_position
 	bulletInstance.rotation_degrees = rotation_degrees
 	bulletInstance.apply_impulse(Vector2(), Vector2(projectile_speed, 0).rotated(rotation))
