@@ -4,6 +4,9 @@ var bullet = preload("res://gear/Projectile.tscn")
 
 signal salvo_fired
 
+# debug
+var CLICK_SHOOTING_WHEN_SELECTED = false
+
 # weapon stats											# implemented
 export (int) var accuracy = 50							# x
 export (int) var stopping_power = 1						# o
@@ -34,7 +37,7 @@ func take_idle_position():
 	position -= idle_position
 
 func _input(event: InputEvent):
-	if event.is_action_pressed('click') and get_parent().selected:
+	if event.is_action_pressed('click') and get_parent().selected and CLICK_SHOOTING_WHEN_SELECTED:
 		shoot_at(get_global_mouse_position())
 
 func shoot_at(target: Vector2):
