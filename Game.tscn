@@ -51,7 +51,6 @@ __meta__ = {
 script = ExtResource( 8 )
 
 [node name="Selector" type="Sprite" parent="InputManager"]
-visible = false
 position = Vector2( 8, 8 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 9 )
