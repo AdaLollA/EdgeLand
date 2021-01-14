@@ -1,5 +1,9 @@
 extends KinematicBody2D
 
+# work
+var current_task = null
+onready var task_manager = get_node("/root/Game/TaskManager")
+
 # mechanics
 export (int) var faction = 0
 export (int) var health = 100
@@ -24,6 +28,14 @@ func _ready():
 	set_process(false)
 	target = get_transform().get_origin()
 	$Weapon.connect("salvo_fired",self,"handle_salvo_fired")
+	
+	# debug stuff for Gideon only
+	if characterName == 'Gideon':
+		process_work()
+
+func process_work():
+	# todo handle work priorities and assignments etc
+	current_task = task_manager.request_task(Task.Type.GROW)
 
 func handle_salvo_fired():
 	_on_MindTick_timeout()

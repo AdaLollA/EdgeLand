@@ -55,6 +55,9 @@ position = Vector2( 8, 8 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 9 )
 
+[node name="TaskManager" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
@@ -65,9 +68,6 @@ script = ExtResource( 3 )
 [node name="Objects" type="Node2D" parent="GameManager"]
 
 [node name="Projectiles" type="Node2D" parent="GameManager"]
-
-[node name="TaskManager" type="Node2D" parent="."]
-script = ExtResource( 7 )
 
 [node name="Camera" type="Camera2D" parent="."]
 pause_mode = 2
@@ -127,5 +127,5 @@ __meta__ = {
 [node name="Pawn" parent="Camera/CanvasLayer/Interface/Characters/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
 [connection signal="new_character" from="GameManager" to="Camera/CanvasLayer/Interface/Characters" method="_on_GameManager_new_character"]
-[connection signal="new_character" from="GameManager" to="GameManager" method="_on_GameManager_new_character"]
+[connection signal="new_character" from="GameManager" to="TaskManager" method="_on_GameManager_new_character"]
 [connection signal="pressed" from="Camera/CanvasLayer/Interface/Time/PlayPause" to="Camera/CanvasLayer/Interface/Time" method="_on_PlayPause_pressed"]
