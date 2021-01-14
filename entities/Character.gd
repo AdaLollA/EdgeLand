@@ -30,12 +30,9 @@ func handle_salvo_fired():
 
 func _input(event):
 	if event.is_action_pressed('right_click') && selected:
-		moveTo(get_global_mouse_position())
+		moveTo(get_node("/root/Game/InputManager").get_selected_tile_center())
 
-func moveTo(value: Vector2):
-	var tile = value / 16
-	tile = Vector2(int(tile.x) + 0.5, int(tile.y) + 0.5)
-	target = tile * 16
+func moveTo(target: Vector2):
 	var newPath = get_node("/root/Game/Navigation").get_simple_path(global_position, target)
 	if current_path != null:
 		current_path.queue_free()

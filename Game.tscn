@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://Camera.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://interface/Time.gd" type="Script" id=4]
 [ext_resource path="res://interface/Characters.gd" type="Script" id=5]
 [ext_resource path="res://interface/Pawn.tscn" type="PackedScene" id=6]
+[ext_resource path="res://TaskManager.gd" type="Script" id=7]
+[ext_resource path="res://InputManager.gd" type="Script" id=8]
+[ext_resource path="res://assets/selection.png" type="Texture" id=9]
 
 [node name="Game" type="Node2D"]
 
@@ -45,6 +48,13 @@ __meta__ = {
 [node name="Furniture" type="Node2D" parent="Object"]
 
 [node name="InputManager" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Selector" type="Sprite" parent="InputManager"]
+visible = false
+position = Vector2( 8, 8 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 9 )
 
 [node name="GameManager" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -56,6 +66,9 @@ script = ExtResource( 3 )
 [node name="Objects" type="Node2D" parent="GameManager"]
 
 [node name="Projectiles" type="Node2D" parent="GameManager"]
+
+[node name="TaskManager" type="Node2D" parent="."]
+script = ExtResource( 7 )
 
 [node name="Camera" type="Camera2D" parent="."]
 pause_mode = 2
@@ -114,6 +127,6 @@ __meta__ = {
 
 [node name="Pawn" parent="Camera/CanvasLayer/Interface/Characters/HBoxContainer" instance=ExtResource( 6 )]
 visible = false
-[connection signal="new_character" from="GameManager" to="GameManager" method="_on_GameManager_new_character"]
 [connection signal="new_character" from="GameManager" to="Camera/CanvasLayer/Interface/Characters" method="_on_GameManager_new_character"]
+[connection signal="new_character" from="GameManager" to="GameManager" method="_on_GameManager_new_character"]
 [connection signal="pressed" from="Camera/CanvasLayer/Interface/Time/PlayPause" to="Camera/CanvasLayer/Interface/Time" method="_on_PlayPause_pressed"]
